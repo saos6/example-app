@@ -99,7 +99,7 @@ const submit = () => {
                             </div>
 
                             <h3 class="text-lg font-semibold mt-6 mb-4">見積明細</h3>
-                            <div v-for="(item, index) in form.items" :key="index" class="grid grid-cols-4 gap-4 mb-4 p-4 border rounded-lg">
+                            <div v-for="(item, index) in form.items" :key="index" class="grid grid-cols-5 gap-4 mb-4 p-4 border rounded-lg">
                                 <div>
                                     <Label :for="`product_id_${index}`">商品</Label>
                                     <select
@@ -139,6 +139,10 @@ const submit = () => {
                                         min="0"
                                     />
                                     <InputError class="mt-2" :message="form.errors[`items.${index}.unit_price`]" />
+                                </div>
+                                <div>
+                                    <Label>金額</Label>
+                                    <p class="mt-1 block w-full text-gray-700">{{ item.quantity * item.unit_price }}</p>
                                 </div>
                                 <div class="flex items-end">
                                     <Button type="button" @click="removeQuotationItem(index)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">

@@ -1,1 +1,1 @@
-Initial commit of Laravel project with CRUD for Customer, Product, and Quotation.
+Add amount column to quotation items and related fixes.
