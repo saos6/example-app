@@ -51,7 +51,7 @@ defineProps<{
                                     <td class="px-6 py-4 whitespace-nowrap">{{ item.product ? item.product.name : 'N/A' }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ item.quantity }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ item.unit_price }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ item.quantity * item.unit_price }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ item.amount }}</td>
                                 </tr>
                             </tbody>
                         </table>

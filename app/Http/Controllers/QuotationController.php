@@ -60,6 +60,7 @@ class QuotationController extends Controller
                     'product_id' => $item['product_id'],
                     'quantity' => $item['quantity'],
                     'unit_price' => $item['unit_price'],
+                    'amount' => $item['quantity'] * $item['unit_price'],
                 ]);
             }
         });
@@ -119,6 +120,7 @@ class QuotationController extends Controller
                     'product_id' => $item['product_id'],
                     'quantity' => $item['quantity'],
                     'unit_price' => $item['unit_price'],
+                    'amount' => $item['quantity'] * $item['unit_price'],
                 ]);
             }
         });

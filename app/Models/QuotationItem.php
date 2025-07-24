@@ -15,6 +15,7 @@ class QuotationItem extends Model
         'product_id',
         'quantity',
         'unit_price',
+        'amount',
     ];
 
     public function quotation(): BelongsTo
