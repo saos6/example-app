@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Affiliation;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AffiliationsExport;
 
 class AffiliationController extends Controller
 {
@@ -48,6 +50,19 @@ class AffiliationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    /**
+     * Display the specified resource.
+     */
+    public function show(Affiliation $affiliation)
+    {
+        return Inertia::render('Affiliations/Show', [
+            'affiliation' => $affiliation,
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit(Affiliation $affiliation)
     {
         $parents = Affiliation::where('id', '!=', $affiliation->id)->get();
@@ -80,5 +95,13 @@ class AffiliationController extends Controller
         $affiliation->delete();
 
         return redirect()->route('affiliations.index');
+    }
+
+    /**
+     * Export affiliations to Excel.
+     */
+    public function exportExcel()
+    {
+        return Excel::download(new AffiliationsExport, 'affiliations.xlsx');
     }
 }

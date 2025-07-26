@@ -31,6 +31,9 @@ const deleteAffiliation = (id) => {
                             <Link :href="route('affiliations.create')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 新規登録
                             </Link>
+                            <a :href="route('affiliations.export.excel')" class="ml-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                Excelエクスポート
+                            </a>
                         </div>
 
                         <table class="min-w-full divide-y divide-gray-200">

@@ -14,6 +14,8 @@ Route::get('dashboard', function () {
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
+Route::get('affiliations/export-excel', [App\Http\Controllers\AffiliationController::class, 'exportExcel'])->name('affiliations.export.excel');
+
 Route::resource('affiliations', App\Http\Controllers\AffiliationController::class)->middleware(['auth', 'verified']);
 
 Route::resource('people', App\Http\Controllers\PersonController::class)->middleware(['auth', 'verified']);
