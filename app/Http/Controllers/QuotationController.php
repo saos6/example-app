@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class QuotationController extends Controller
 {
@@ -133,5 +134,12 @@ class QuotationController extends Controller
         $quotation->delete();
 
         return redirect()->route('quotations.index');
+    }
+
+    public function generatePdf(Quotation $quotation)
+    {
+        $quotation->load(['customer', 'person', 'quotationItems.product']);
+        $pdf = Pdf::loadView('quotations.pdf', compact('quotation'));
+        return $pdf->download('quotation-' . $quotation->id . '.pdf');
     }
 }

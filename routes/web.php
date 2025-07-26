@@ -23,3 +23,5 @@ Route::resource('customers', App\Http\Controllers\CustomerController::class)->mi
 Route::resource('products', App\Http\Controllers\ProductController::class)->middleware(['auth', 'verified']);
 
 Route::resource('quotations', App\Http\Controllers\QuotationController::class)->middleware(['auth', 'verified']);
+
+Route::get('/quotations/{quotation}/pdf', [App\Http\Controllers\QuotationController::class, 'generatePdf'])->name('quotations.pdf');

@@ -57,6 +57,9 @@ defineProps<{
                         </table>
 
                         <div class="flex justify-end">
+                            <a :href="route('quotations.pdf', quotation.id)" target="_blank" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">
+                                PDF出力
+                            </a>
                             <Link :href="route('quotations.edit', quotation.id)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
                                 編集
                             </Link>
