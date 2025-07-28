@@ -32,7 +32,7 @@ const deleteAffiliation = (id) => {
                                 新規登録
                             </Link>
                             <a :href="route('affiliations.export.excel')" class="ml-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                                Excelエクスポート
+                                Export
                             </a>
                         </div>
 
@@ -51,6 +51,7 @@ const deleteAffiliation = (id) => {
                                     <td class="px-6 py-4 whitespace-nowrap">{{ affiliation.name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ affiliation.parent ? affiliation.parent.name : '-' }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <Link :href="route('affiliations.show', affiliation.id)" class="text-indigo-600 hover:text-indigo-900 mr-4">詳細</Link>
                                         <Link :href="route('affiliations.edit', affiliation.id)" class="text-indigo-600 hover:text-indigo-900 mr-4">編集</Link>
                                         <button @click="deleteAffiliation(affiliation.id)" class="text-red-600 hover:text-red-900">削除</button>
                                     </td>

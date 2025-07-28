@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AffiliationsExport;
+use App\Http\Controllers\Controller;
 use App\Models\Affiliation;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\AffiliationsExport;
+use Inertia\Inertia;
 
 class AffiliationController extends Controller
 {
@@ -95,6 +96,11 @@ class AffiliationController extends Controller
         $affiliation->delete();
 
         return redirect()->route('affiliations.index');
+    }
+
+    public function export()
+    {
+        return Excel::download(new AffiliationsExport, 'affiliations.xlsx');
     }
 
     /**

@@ -31,6 +31,9 @@ const deletePerson = (id) => {
                             <Link :href="route('people.create')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 新規登録
                             </Link>
+                            <a :href="route('people.export.excel')" class="ml-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                Export
+                            </a>
                         </div>
 
                         <table class="min-w-full divide-y divide-gray-200">
@@ -50,6 +53,7 @@ const deletePerson = (id) => {
                                     <td class="px-6 py-4 whitespace-nowrap">{{ person.email }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ person.affiliation ? person.affiliation.name : '-' }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <Link :href="route('people.show', person.id)" class="text-indigo-600 hover:text-indigo-900 mr-4">詳細</Link>
                                         <Link :href="route('people.edit', person.id)" class="text-indigo-600 hover:text-indigo-900 mr-4">編集</Link>
                                         <button @click="deletePerson(person.id)" class="text-red-600 hover:text-red-900">削除</button>
                                     </td>

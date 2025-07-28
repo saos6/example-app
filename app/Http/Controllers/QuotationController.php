@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\QuotationExport;
 
 class QuotationController extends Controller
 {
@@ -141,5 +143,10 @@ class QuotationController extends Controller
         $quotation->load(['customer', 'person', 'quotationItems.product']);
         $pdf = Pdf::loadView('quotations.pdf', compact('quotation'));
         return $pdf->download('quotation-' . $quotation->id . '.pdf');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new QuotationExport, 'quotations.xlsx');
     }
 }

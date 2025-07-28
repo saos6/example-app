@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Person;
+use App\Exports\PeopleExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Affiliation;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -50,6 +52,14 @@ class PersonController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    public function show(Person $person)
+    {
+        $person->load('affiliation');
+        return Inertia::render('People/Show', [
+            'person' => $person,
+        ]);
+    }
+
     public function edit(Person $person)
     {
         $affiliations = Affiliation::all();
@@ -83,5 +93,10 @@ class PersonController extends Controller
         $person->delete();
 
         return redirect()->route('people.index');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new PeopleExport, 'people.xlsx');
     }
 }

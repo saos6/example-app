@@ -6,6 +6,8 @@ use App\Models\Customer;
 use App\Models\Person;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\CustomerExport;
 
 class CustomerController extends Controller
 {
@@ -64,5 +66,10 @@ class CustomerController extends Controller
         $customer->delete();
 
         return redirect()->route('customers.index');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new CustomerExport, 'customers.xlsx');
     }
 }
